@@ -22,6 +22,10 @@ public class PController : MonoBehaviour
     private Vector3 pVel;
     private Transform camForward;
     private float radiusOfCast = .25f;
+    
+    private Animator animator;
+    private int moveXParameterID;
+    private int moveYParameterID;
 
     //These are to store out inputs
     private InputAction moveAction;
@@ -36,6 +40,10 @@ public class PController : MonoBehaviour
         playerController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         camForward = GameObject.Find("Main Camera").GetComponent<Transform>();
+
+        animator = GetComponentInChildren<Animator>();
+        moveXParameterID = Animator.StringToHash("MoveX");
+        moveYParameterID = Animator.StringToHash("MoveY");
 
         moveAction = playerInput.actions["BasicMove"];
         jumpAction = playerInput.actions["Jump"];
@@ -53,6 +61,10 @@ public class PController : MonoBehaviour
         
         //Get InputSystem input, as pulled through the Player Input Component
         inputGrab = moveAction.ReadValue<Vector2>();
+
+        animator.SetFloat(moveXParameterID, inputGrab.x);
+        animator.SetFloat(moveYParameterID, inputGrab.y);
+
         if(!grounded)
         {
             Vector3 tempGrab = inputGrab;
