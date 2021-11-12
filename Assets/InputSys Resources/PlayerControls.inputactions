@@ -14,6 +14,54 @@
                     "interactions": ""
                 },
                 {
+                    "name": "LashForward",
+                    "type": "Button",
+                    "id": "edd48fb8-1968-4ebc-beb5-c37ae577da7a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LashDown",
+                    "type": "Button",
+                    "id": "b248bd0b-ce51-498b-93bf-8a1ff3bff60e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LashUp",
+                    "type": "Button",
+                    "id": "80db13d0-d49d-4d5f-8c85-52b1526ec41e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LashLeft",
+                    "type": "Button",
+                    "id": "839447f9-541f-418c-8f4f-c406ad85b0ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LashRight",
+                    "type": "Button",
+                    "id": "d4df6807-65b0-44d8-b3d4-5cb02be51049",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "LashBackward",
+                    "type": "Button",
+                    "id": "eedbbfa7-b24c-422b-abe7-af1b383b749f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Look",
                     "type": "Value",
                     "id": "af97e91c-2bb5-450a-8690-4c689def6892",
@@ -105,6 +153,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05511133-e7d5-414b-a13f-f590d526ebe2",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LashForward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "887eab11-c585-45f1-912a-dce8d2ed7597",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LashBackward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff1bfcd2-7bf4-4c1b-8fec-f41556334876",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LashRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd6c1dcb-e1e9-400a-8f65-01519f6d249d",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "685d1312-86fe-4e9f-8704-3f388b196a12",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LashUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "271e53ea-4f31-42d9-a333-00e85e6a5c72",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LashDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

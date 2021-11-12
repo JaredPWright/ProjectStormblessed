@@ -22,15 +22,16 @@ public class PController : MonoBehaviour
     private Vector3 pVel;
     private Transform camForward;
     private float radiusOfCast = .25f;
+    public Vector3 _velocity;
     
-    private Animator animator;
+    //private Animator animator;
     private int moveXParameterID;
     private int moveYParameterID;
 
     //These are to store out inputs
     private InputAction moveAction;
     private InputAction jumpAction;
-    //private InputAction lookAction;
+    private InputAction lookAction;
 
     [SerializeField] private bool grounded = false;
     // Start is called before the first frame update
@@ -41,18 +42,19 @@ public class PController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         camForward = GameObject.Find("Main Camera").GetComponent<Transform>();
 
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
         moveXParameterID = Animator.StringToHash("MoveX");
         moveYParameterID = Animator.StringToHash("MoveY");
 
         moveAction = playerInput.actions["BasicMove"];
         jumpAction = playerInput.actions["Jump"];
+        lookAction = playerInput.actions["Look"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 _velocity = Vector3.zero;
+        _velocity = Vector3.zero;
         Vector3 moveVal = Vector3.zero;
         Vector2 inputGrab;
 
@@ -62,8 +64,8 @@ public class PController : MonoBehaviour
         //Get InputSystem input, as pulled through the Player Input Component
         inputGrab = moveAction.ReadValue<Vector2>();
 
-        animator.SetFloat(moveXParameterID, inputGrab.x);
-        animator.SetFloat(moveYParameterID, inputGrab.y);
+        // animator.SetFloat(moveXParameterID, inputGrab.x);
+        // animator.SetFloat(moveYParameterID, inputGrab.y);
 
         if(!grounded)
         {
@@ -79,7 +81,7 @@ public class PController : MonoBehaviour
         playerController.Move(moveVal * Time.deltaTime * playerSpeed);
 
         if(jumpAction.triggered && grounded)
-            _velocity.y += Mathf.Sqrt(playerJumpHeight * -3f * gravity);
+            _velocity.y += Mathf.Sqrt(playerJumpHeight * playerWeight * -3f * gravity);
 
         _velocity.y += gravity * playerWeight * Time.deltaTime;
 
