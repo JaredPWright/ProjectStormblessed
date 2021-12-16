@@ -82,10 +82,10 @@ public class BasicMovement : MonoBehaviour
             directionBools[3] = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && MovementBools.canJump)
+        if(Input.GetKeyDown(KeyCode.Space)/*MovementBools.canJump*/)
         {
             directionBools[4] = true;
-            MovementBools.canJump = false;
+            /*MovementBools.canJump = false;*/
             animator.SetBool("jumping", true);
         }
     }

@@ -66,7 +66,7 @@
                     "type": "Value",
                     "id": "af97e91c-2bb5-450a-8690-4c689def6892",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "ScaleVector2",
                     "interactions": ""
                 },
                 {
@@ -74,6 +74,14 @@
                     "type": "Button",
                     "id": "a495e13c-0600-40a5-8443-8d17b20cd1ea",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "6c1ff55a-715a-44b6-bfbb-c6d68d1267ba",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -203,7 +211,7 @@
                 {
                     "name": "",
                     "id": "685d1312-86fe-4e9f-8704-3f388b196a12",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/g",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -214,13 +222,46 @@
                 {
                     "name": "",
                     "id": "271e53ea-4f31-42d9-a333-00e85e6a5c72",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "LashDown",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "cca5f289-8c9a-441e-a265-deabb21a3880",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "93f89b43-3d42-484a-856b-e478787e1e53",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "7c60cf6c-db6c-49ce-8644-3255298936ba",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

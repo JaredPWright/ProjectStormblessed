@@ -20,7 +20,7 @@ public class NormalCheck : MonoBehaviour
 
         if(normalStruck.y == -1.0f)
         {
-            MovementBools.canJump = true;
+            //MovementBools.canJump = true;
         }
     }
 }

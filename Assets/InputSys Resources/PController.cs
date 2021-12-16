@@ -15,6 +15,7 @@ public class PController : MonoBehaviour
     public Vector3 drag;
     public Transform sphereCastCenter;
     public LayerMask ground;
+    public Vector3 degreeOfRotation;
 
     //These are apparently important for controlling the player.
     private CharacterController playerController;
@@ -32,6 +33,7 @@ public class PController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction lookAction;
+    private InputAction rotateAction;
 
     [SerializeField] private bool grounded = false;
     // Start is called before the first frame update
@@ -49,6 +51,7 @@ public class PController : MonoBehaviour
         moveAction = playerInput.actions["BasicMove"];
         jumpAction = playerInput.actions["Jump"];
         lookAction = playerInput.actions["Look"];
+        rotateAction = playerInput.actions["Rotate"];
     }
 
     // Update is called once per frame
@@ -64,26 +67,39 @@ public class PController : MonoBehaviour
         //Get InputSystem input, as pulled through the Player Input Component
         inputGrab = moveAction.ReadValue<Vector2>();
 
-        // animator.SetFloat(moveXParameterID, inputGrab.x);
-        // animator.SetFloat(moveYParameterID, inputGrab.y);
+        float rotationGrab = rotateAction.ReadValue<float>();
+
+        if(rotationGrab != 0)
+        {
+            if(rotationGrab < 0)
+            {
+                gameObject.transform.Rotate(-degreeOfRotation, Space.Self);
+            }else if(rotationGrab > 0)
+            {
+                gameObject.transform.Rotate(degreeOfRotation, Space.Self);
+            }
+        }
 
         if(!grounded)
         {
             Vector3 tempGrab = inputGrab;
             tempGrab.x /= 1 + drag.x * Time.deltaTime;
             tempGrab.y /= 1 + drag.y * Time.deltaTime;
-            moveVal = new Vector3(tempGrab.x, 0.0f, tempGrab.y);
         }
         else
             moveVal = new Vector3(inputGrab.x, 0.0f, inputGrab.y);
         //transform.Rotate(0f, camForward.rotation.y, 0f);
 
+        moveVal = transform.TransformDirection(moveVal);
         playerController.Move(moveVal * Time.deltaTime * playerSpeed);
 
-        if(jumpAction.triggered && grounded)
-            _velocity.y += Mathf.Sqrt(playerJumpHeight * playerWeight * -3f * gravity);
+        if((jumpAction.triggered && grounded) && !MovementBools.lashing)
+        {
+            _velocity.y += Mathf.Sqrt(playerJumpHeight * playerWeight * gravity);
+            Debug.Log("jump");
+        }
 
-        _velocity.y += gravity * playerWeight * Time.deltaTime;
+        _velocity.y -= gravity * playerWeight * Time.deltaTime;
 
         _velocity.x /= 1 + drag.x * Time.deltaTime;
         _velocity.y /= 1 + drag.y * Time.deltaTime;
@@ -94,6 +110,6 @@ public class PController : MonoBehaviour
 
     void FixedUpdate()
     {
-        grounded = Physics.CheckSphere(sphereCastCenter.position, radiusOfCast, ground, QueryTriggerInteraction.Ignore);        
+        grounded = Physics.CheckSphere(sphereCastCenter.position, radiusOfCast, ground, QueryTriggerInteraction.Ignore);    
     }
 }
